@@ -1,0 +1,269 @@
+/**
+ * Assessment Screen Stylesheet
+ * Focused diagnostic interface for cognitive & knowledge benchmarking.
+ */
+.assessment-container {
+  max-width: 780px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.assessment-card {
+  padding: 2.25rem;
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-lg);
+}
+
+.assessment-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.assessment-tags-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.assessment-domain-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--color-indigo-light);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.badge-difficulty {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-difficulty.diff-easy {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-emerald-light);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-difficulty.diff-medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--color-warning);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.badge-difficulty.diff-hard {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--color-rose);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.assessment-counter-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.assessment-progress-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--bg-surface-elevated);
+  border-radius: var(--radius-full);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.assessment-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-indigo) 0%, var(--color-cyan-light) 100%);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-smooth);
+}
+
+.assessment-question-text {
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+/* Options Container */
+.assessment-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.assessment-option-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.assessment-option-card:hover {
+  background: var(--bg-surface-elevated);
+  border-color: var(--border-medium);
+}
+
+.assessment-option-card.selected {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--color-indigo-light);
+  box-shadow: 0 0 16px rgba(99, 102, 241, 0.25);
+}
+
+.option-letter-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.assessment-option-card.selected .option-letter-badge {
+  background: var(--color-indigo);
+  color: #fff;
+}
+
+.option-text {
+  font-size: 1rem;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.option-check-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--text-dim);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.assessment-option-card.selected .option-check-circle {
+  border-color: var(--color-cyan-light);
+  background: var(--color-cyan-light);
+}
+
+.assessment-option-card.is-correct {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: #168447;
+  box-shadow: 0 0 0 1px rgba(22, 132, 71, 0.12);
+}
+
+.assessment-option-card.is-incorrect {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: #B42318;
+  box-shadow: 0 0 0 1px rgba(180, 35, 24, 0.1);
+}
+
+.assessment-option-card.is-correct .option-letter-badge {
+  background: #168447;
+  color: #fff;
+}
+
+.assessment-option-card.is-incorrect .option-letter-badge {
+  background: #B42318;
+  color: #fff;
+}
+
+.assessment-option-card.has-feedback .option-check-circle {
+  display: none;
+}
+
+.assessment-option-card.has-feedback {
+  cursor: default;
+}
+
+.assessment-option-card.is-correct.selected .option-letter-badge,
+.assessment-option-card.is-incorrect.selected .option-letter-badge {
+  background: #168447;
+}
+
+.assessment-option-card.is-incorrect.selected .option-letter-badge {
+  background: #B42318;
+}
+
+.assessment-navigation-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+html[data-theme="dark"] .assessment-option-card.is-correct {
+  background: rgba(16, 185, 129, 0.16);
+  border-color: #34D399;
+}
+
+html[data-theme="dark"] .assessment-option-card.is-incorrect {
+  background: rgba(248, 113, 113, 0.14);
+  border-color: #F87171;
+}
+
+html[data-theme="dark"] .assessment-option-card.is-correct.selected .option-letter-badge {
+  background: #168447;
+}
+
+html[data-theme="dark"] .assessment-option-card.is-incorrect.selected .option-letter-badge {
+  background: #B42318;
+}
+
+/* Question Dots Navigation */
+.assessment-dots-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.dot-nav-item {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.dot-nav-item:hover {
+  border-color: var(--color-indigo-light);
+}
+
+.dot-nav-item.answered {
+  background: var(--color-indigo);
+  border-color: var(--color-indigo-light);
+}
+
+.dot-nav-item.current {
+  border-color: var(--color-cyan-light);
+  box-shadow: 0 0 8px var(--color-cyan-light);
+  transform: scale(1.25);
+}

@@ -1,0 +1,240 @@
+/**
+ * Responsive Stylesheet & Accessibility Rules
+ * Mobile-first adjustments, tablet breakdowns, and accessibility considerations.
+ */
+
+/* ==========================================================
+   TABLET & MEDIUM SCREENS (<= 992px)
+   ========================================================== */
+@media (max-width: 992px) {
+  .pathways-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .stream-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-hero-layout {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+
+  #screen-hub > div > div[style*="grid-template-columns: 1.6fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hub-profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .result-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .areas-breakdown-row {
+    grid-template-columns: 1fr;
+  }
+
+  .topic-meters-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   MOBILE DEVICES (<= 640px)
+   ========================================================== */
+@media (max-width: 640px) {
+  .main-content {
+    padding: 1rem 0.75rem 2rem 0.75rem;
+  }
+
+  .hub-hero-banner-new {
+    padding: 1.5rem 1.25rem !important;
+  }
+
+  .hub-hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .hub-hero-image-frame {
+    width: min(100%, 320px);
+  }
+
+  .hub-hero-illustration {
+    max-height: 300px;
+  }
+
+  .hub-motivational-badge {
+    right: 0.5rem;
+    bottom: 0.5rem;
+    max-width: calc(100% - 1rem);
+    padding: 0.4rem 0.65rem;
+    font-size: 0.7rem;
+  }
+
+  .hub-stats-strip {
+    align-items: flex-start;
+  }
+
+  .hub-stats-group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 0.85rem;
+  }
+
+  .hub-stats-divider {
+    display: none;
+  }
+
+  .hub-badges-group {
+    flex-wrap: wrap;
+  }
+
+  /* Header Compact */
+  .minimal-app-header {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .header-brand-wrap {
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .btn-header-back span {
+    display: none;
+  }
+
+  .header-progress-wrap {
+    order: 3;
+    flex: 1 0 100%;
+    min-width: 0;
+  }
+
+  .header-utilities {
+    gap: 0.25rem;
+  }
+
+  .header-pill-btn {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .header-brand-tagline {
+    display: none;
+  }
+
+  .header-pill-btn span:not(.flag) {
+    display: none;
+  }
+
+  /* Titles */
+  .onboarding-screen-title {
+    font-size: 1.5rem;
+  }
+
+  .onboarding-screen-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .app-card {
+    padding: 1.25rem 1rem;
+  }
+
+  /* Grids */
+  .language-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .school-grades-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .courses-catalog-grid,
+  .skills-catalog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pref-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .time-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .result-header-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .roadmap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Assessment */
+  .assessment-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .assessment-question-text {
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .assessment-option-card {
+    padding: 0.9rem 1rem;
+  }
+
+  .screen-actions-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .screen-actions-bar .btn {
+    width: 100%;
+  }
+
+  .assessment-navigation-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hub-hero-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .hub-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   ACCESSIBILITY & REDUCED MOTION
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus Visible outline rings for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-cyan-light);
+  outline-offset: 3px;
+}

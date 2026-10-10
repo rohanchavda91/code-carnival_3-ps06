@@ -1,0 +1,331 @@
+/**
+ * LEFT SIDEBAR LAYOUT
+ * Moves the footer navigation + status panel into a fixed glass sidebar.
+ * <= 992px : compact icon rail
+ * <= 640px : transforms back into a bottom bar
+ * Loaded AFTER glassmorphism.css (geometry wins; glass materials from tokens).
+ */
+
+/* ==========================================================
+   DESKTOP: fixed 236px glass sidebar on the left
+   ========================================================== */
+#app-root {
+  padding-left: 236px;
+}
+
+.app-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 236px;
+  z-index: 995;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.1rem 0.85rem;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-right: 1px solid var(--glass-border);
+  box-shadow: 4px 0 24px rgba(31, 38, 135, 0.1), inset -1px 0 0 var(--glass-border-soft);
+}
+
+/* --- Brand block --- */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.15rem 0.35rem 0.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-brand-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-violet) 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.sidebar-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.sidebar-brand-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.sidebar-brand-sub {
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+/* --- Navigation list (turns the bottom bar into a vertical menu) --- */
+.app-sidebar .bottom-nav-bar {
+  position: static;
+  height: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.35rem;
+  padding: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+  box-shadow: none;
+  z-index: auto;
+}
+
+.app-sidebar .bottom-nav-item {
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: none;
+  flex: 0 0 auto;
+  padding: 0.72rem 0.85rem;
+  font-size: 0.9rem;
+  border-radius: 12px;
+}
+
+.app-sidebar .bottom-nav-item .nav-icon {
+  width: 26px;
+  text-align: center;
+  font-size: 1.15rem;
+}
+
+.app-sidebar .bottom-nav-item .nav-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* --- Spacer & status panel --- */
+.sidebar-spacer {
+  flex: 1;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+  padding: 0.85rem 0.5rem 0.25rem;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.sidebar-status-title {
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+}
+
+.sidebar-status-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--color-indigo);
+  font-weight: 600;
+}
+
+.sidebar-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-indigo);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.85);
+  animation: sidebarStatusPulse 2s ease-in-out infinite;
+}
+
+@keyframes sidebarStatusPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.sidebar-status-dim {
+  color: var(--text-dim);
+}
+
+/* Drawer centers over the content area (not over the sidebar) */
+#drawer-more-menu {
+  padding-left: 236px;
+}
+
+/* ==========================================================
+   TABLET (<= 992px): compact icon rail
+   ========================================================== */
+@media (max-width: 992px) {
+  #app-root {
+    padding-left: 84px;
+  }
+
+  .app-sidebar {
+    width: 84px;
+    padding: 1rem 0.55rem;
+    align-items: stretch;
+  }
+
+  .sidebar-brand {
+    justify-content: center;
+    padding: 0.15rem 0 0.8rem;
+  }
+
+  .sidebar-brand-text,
+  .sidebar-footer,
+  .sidebar-status-dim {
+    display: none;
+  }
+
+  .app-sidebar .bottom-nav-item {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.7rem 0.25rem;
+    text-align: center;
+  }
+
+  .app-sidebar .bottom-nav-item .nav-icon {
+    width: auto;
+    font-size: 1.3rem;
+  }
+
+  .app-sidebar .bottom-nav-item .nav-label {
+    display: none;
+  }
+
+  #drawer-more-menu {
+    padding-left: 84px;
+  }
+}
+
+/* ==========================================================
+   MOBILE (<= 640px): transforms into a bottom bar again
+   ========================================================== */
+@media (max-width: 640px) {
+  #app-root {
+    padding-left: 0;
+  }
+
+  .app-sidebar {
+    top: auto;
+    right: 0;
+    width: 100%;
+    flex-direction: row;
+    gap: 0;
+    padding: 0;
+    border-right: none;
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -6px 24px rgba(31, 38, 135, 0.12), inset 0 1px 0 var(--glass-highlight);
+  }
+
+  .sidebar-brand,
+  .sidebar-spacer,
+  .sidebar-footer {
+    display: none;
+  }
+
+  .app-sidebar .bottom-nav-bar {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+    padding: 0.35rem 0.25rem calc(0.35rem + env(safe-area-inset-bottom));
+  }
+
+  .app-sidebar .bottom-nav-item {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 0.4rem 0.2rem;
+    flex: 1;
+    max-width: 100px;
+    text-align: center;
+  }
+
+  .app-sidebar .bottom-nav-item .nav-icon {
+    width: auto;
+    font-size: 1.25rem;
+  }
+
+  .app-sidebar .bottom-nav-item .nav-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+
+  /* Bottom bar overlays content — add clearance */
+  .main-content {
+    padding-bottom: 6rem;
+  }
+
+  #drawer-more-menu {
+    padding-left: 1rem;
+  }
+}
+
+/* ==========================================================
+   RTL LANGUAGES (Arabic, Urdu, ...): mirror the sidebar
+   ========================================================== */
+html[dir="rtl"] #app-root {
+  padding-left: 0;
+  padding-right: 236px;
+}
+
+html[dir="rtl"] .app-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--glass-border);
+  box-shadow: -4px 0 24px rgba(31, 38, 135, 0.1), inset 1px 0 0 var(--glass-border-soft);
+}
+
+html[dir="rtl"] #drawer-more-menu {
+  padding-left: 0;
+  padding-right: 236px;
+}
+
+@media (max-width: 992px) {
+  html[dir="rtl"] #app-root {
+    padding-left: 0;
+    padding-right: 84px;
+  }
+
+  html[dir="rtl"] #drawer-more-menu {
+    padding-left: 0;
+    padding-right: 84px;
+  }
+}
+
+@media (max-width: 640px) {
+  html[dir="rtl"] #app-root {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  html[dir="rtl"] .app-sidebar {
+    border-right: none;
+    border-left: none;
+    box-shadow: 0 -6px 24px rgba(31, 38, 135, 0.12), inset 0 1px 0 var(--glass-highlight);
+  }
+
+  html[dir="rtl"] #drawer-more-menu {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
